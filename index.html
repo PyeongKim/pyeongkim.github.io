@@ -14,6 +14,7 @@
       --accent:#6ee7b7; --accent2:#0084ff; --accent2-end:#0084ff; --line:#2a3040; --chip:#1c2230;
       --shadow:0 10px 30px rgba(0,0,0,.35); --box-shadow:#200bbb; --dot-shadow:rgba(0,112,249,.229);
       --header-bg-start:rgba(10,12,18,.8); --header-bg-end:rgba(10,12,18,.4);
+      --heading-color: #bbc6ff;
       --kbd-bg:#0c1017; --hero-end:#131827; --pub-start:#121622; --pub-end:#10131b;
       --avatar-bg:#121622; --bar-bg:#0b0f16; --toast-bg:#0b1020; --toast-fg:#e5f2ff;
     }
@@ -24,6 +25,7 @@
       --accent:#059669; --accent2:#27bd83; --accent2-end:#27bd83; --box-shadow:#27bd83; --dot-shadow:rgba(1,63,19,.13);
       --line:#e5e7eb; --chip:#f3f4f6; --shadow:0 4px 12px rgba(0,0,0,.06);
       --header-bg-start:#ffffff; --header-bg-end:#ffffff; --kbd-bg:#f3f4f6; --hero-end:#ffffff;
+      --heading-color: #01583d;
       --pub-start:#ffffff; --pub-end:#ffffff; --avatar-bg:#f3f4f6; --bar-bg:#eef2f7; --toast-bg:#ffffff; --toast-fg:#0f172a;
     }
 
@@ -34,9 +36,10 @@
       background:linear-gradient(180deg,var(--bg),var(--bg-2) 60%,var(--bg));
       color:var(--text); line-height:1.6;
     }
+
     a{color:var(--accent2); text-decoration:none}
     a:focus-visible, button:focus-visible{outline:2px solid var(--accent2); outline-offset:2px}
-
+    
     header{
       position:sticky; top:0; z-index:50; backdrop-filter: blur(10px);
       background:linear-gradient(180deg,var(--header-bg-start),var(--header-bg-end));
@@ -51,6 +54,9 @@
       background:linear-gradient(180deg,var(--card),var(--hero-end));
       border:1px solid var(--line); border-radius:16px; box-shadow:var(--shadow);
     }
+    .plaintext {
+      font-size: 16px;
+    }
     .avatar{
       width:110px; height:110px; border-radius:50%; background:var(--avatar-bg); border:2px solid var(--line); overflow:hidden;
       display:grid; place-items:center; color:var(--muted); font-weight:600; font-size:22px;
@@ -58,24 +64,27 @@
     .hero h1{margin:0 0 6px; font-size:28px}
     .headline{margin:0 0 10px; color:var(--muted)}
     .chips{display:flex; flex-wrap:wrap; gap:8px; margin-top:8px}
-    .chip{background:var(--chip); color:var(--text); padding:6px 10px; border-radius:999px; border:1px solid var(--line); font-size:12px}
+    .chip{background:var(--chip); color:var(--text); padding:6px 10px; border-radius:999px; border:1px solid var(--line); font-size:13px}
     .cta{display:flex; gap:10px}
-    .small {font-size: 12px}
     .btn{
       background:linear-gradient(180deg,var(--accent2),var(--accent2-end)); padding:10px 16px; color:white; border:none; border-radius:12px; cursor:pointer; font-weight:600;
-      box-shadow:0 6px 18px var(--box-shadow); transition:transform .12s ease; font-size:15px;
+      box-shadow:0 6px 18px var(--box-shadow); transition:transform .12s ease; 
     }
     .btn.alt{
       background:transparent; color:var(--text); border:1px solid var(--line); box-shadow:none;
       display:inline-flex; align-items:center; justify-content:center; font-size:14px;
     }
+    /* .pub_title {
+      color: #474747;
+    } */
+    .small {font-size: 12px}
     .btn.small{font-size:12px; padding:6px 10px}
     .btn:active{transform:translateY(1px)}
 
     section.card{
       background:linear-gradient(180deg,var(--card),var(--card-end)); border:1px solid var(--line); border-radius:16px; padding:18px; box-shadow:var(--shadow);
     }
-    h2{margin:0 0 12px; font-size:18px; letter-spacing:.2px}
+    h2{margin:0 0 12px; font-size:18px; letter-spacing:.2px; color: var(--heading-color);}
     .grid-2{display:grid; grid-template-columns:1fr 1fr; gap:18px}
     @media (max-width:900px){ .grid-2{grid-template-columns:1fr} .hero{grid-template-columns:80px 1fr} .avatar{width:80px;height:80px} }
 
@@ -99,8 +108,8 @@
       border-radius:10px; box-shadow:var(--shadow); opacity:0; transform:translateY(8px); transition:all .2s ease;
     }
     .toast.show{opacity:1; transform:translateY(0)}
-    .badges{display:flex; gap:8px; flex-wrap:wrap}
-    .badge{border:1px dashed var(--line); border-radius:999px; padding:6px 10px; color:var(--muted); font-size:12px}
+    .badges{display:flex; gap:8px; flex-wrap:wrap; }
+    .badge{border:1px dashed var(--line); border-radius:999px; padding:6px 10px; color:var(--muted); font-size:13px}
 
     /* Skills as badges */
     #skillBars { display:flex; flex-wrap:wrap; gap:8px; }
@@ -129,19 +138,20 @@
 
     <section class="card" id="about">
       <h2>About</h2>
-      <p id="aboutText">Placeholder</p>
+      <p id="aboutText", class="plaintext">Placeholder</p>
       <div class="badges" id="highlights"></div>
     </section>
 
     <section class="card grid-2" id="experience">
       <div>
-        <h2>Education</h2>
-        <div class="timeline" id="eduTimeline"></div>
-      </div>
-      <div>
         <h2>Experience</h2>
         <div class="timeline" id="expTimeline"></div>
       </div>
+      <div>
+        <h2>Education</h2>
+        <div class="timeline" id="eduTimeline"></div>
+      </div>
+      
     </section>
 
     <section class="card grid-2" id="skills">
@@ -165,7 +175,7 @@
 
     <section class="card" id="contact">
       <h2>Contact</h2>
-      <p class="muted">Feel free to contact me anytime for research collaborations.</p>
+      <p  class="plaintext">Feel free to contact me anytime for research collaborations.</p>
       <div class="contact-actions" style="display:flex; gap:10px; flex-wrap:wrap">
         <button class="btn alt" id="copyEmail">Copy Email</button>
         <a class="btn alt" id="openLinkedIn" target="_blank" rel="noopener">LinkedIn</a>
@@ -350,7 +360,7 @@
         const links = (p.links || []).map(l => `<a href="${l.href}" target="_blank" rel="noopener">${l.label}</a>`).join(" • ");
         pubList.appendChild(el(`
           <div class="pub">
-            <div><strong>${p.title}</strong></div>
+            <div class='pub_title'><strong>${p.title}</strong></div>
             <div class="meta">
               <span>${p.authors || ""}</span>
               ${p.venue ? `<span>• ${p.venue}</span>` : ""}
@@ -362,6 +372,7 @@
         `));
       });
     }
+   
 
     function inferTypeFromVenue(venue = "") {
       const v = venue.toLowerCase();
